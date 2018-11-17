@@ -1,0 +1,39 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<script type="text/javascript">
+    function saveEdits() {
+        //get the editable element
+        var editElem = document.getElementById("edit");
+        //get the editied element content
+        var userVersion = editElem.innerHTML;
+        //save the user variable to local storage
+        localStorage.userEdits = userVersion;
+        //write a confirmation to the user
+        document.getElementById("update").innerHTML = "Edits saved";
+    }
+
+    function checkEidts() {
+        if (localStorage.userEdits !== null)
+            document.getElementById("edit").innerHTML = localStorage.userEdits;
+    }
+
+</script>
+
+
+<body>
+    <div id="edit" contenteditable="true">
+        Here is the element's original content
+    </div>
+
+    <input type="button" value="save my edits" onclick="saveEdits()"/>
+    <div id="update">-Edit the text and click to save for next time</div>
+
+    <body onload="checkEdits()"></body>
+
+</body>
+</html>
